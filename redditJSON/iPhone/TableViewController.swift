@@ -9,21 +9,14 @@
 import UIKit
 import Foundation
 
-import Alamofire
-import SCLAlertView
-import MBProgressHUD
-import SwiftyJSON
+
 
 
 class TableViewController: UITableViewController {
     var indexSelected:Int = 0
     var arrRes = [[String:AnyObject]]() //Array of dictionary
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    // 1
-    let defaultSession = URLSession(configuration: .default)
-    // 2
-    var dataTask: URLSessionDataTask?
+    let data:DataReddit = DataReddit()
     
     @IBOutlet var tableJSON: UITableView!
     
@@ -32,66 +25,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        getDataWeb()
-        getDataLocal()
-    }
-    
-    func getDataWeb() {
-        showLoadingHUD()
-        Alamofire.request("https://www.reddit.com/reddits.json").responseJSON { response in
-            self.hideLoadingHUD()
-            
-            switch response.result {
-            case .success(let data):
-                let swiftyJsonVar = JSON(data)
-                if let resData = swiftyJsonVar["data"]["children"].arrayObject {
-                    self.arrRes = resData as! [[String:AnyObject]]
-                }
-                
-                if self.arrRes.count > 0 {
-                    for index in 0...(self.arrRes.count - 1) {
-                        
-                        let item = Items(context: self.context) // Link Task & Context
-                        let dict = self.arrRes[index]
-                        let data = dict["data"] as! [String:AnyObject]
-                        
-                        item.id = data["id"] as? String
-                        item.text = data["public_description"] as? String
-                        item.title = data["title"] as? String
-                        
-                        if let icon = data["icon_img"] as? String {
-                            item.icon = icon
-                        }
-                        
-                        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                    }
-                }
-                
-            case .failure(let error):
-                SCLAlertView().showError("Error", subTitle: "Error al intentar consumir API")
-            }
-        }
-    }
-    
-    func getDataLocal() {
-        do {
-            items = try context.fetch(Items.fetchRequest())
-            
-            if items.count > 0 {
-                tableJSON.reloadData()
-            }
-        }
-        catch {
-            SCLAlertView().showError("Error", subTitle: "Fetching Failed")
-        }
-    }
-    
-    private func showLoadingHUD() {
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "Loading..."
-    }
-    
-    private func hideLoadingHUD() {
-        MBProgressHUD.hide(for: self.view, animated: true)
+        items = data.getDataLocal()
     }
 
     override func didReceiveMemoryWarning() {

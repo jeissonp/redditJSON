@@ -16,6 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        var mainStoryboard: UIStoryboard? = nil
+        
+        if(UIDevice.current.userInterfaceIdiom == .pad) {
+            mainStoryboard = UIStoryboard(name: "Main_iPad", bundle: nil)
+        }
+        else if(UIDevice.current.userInterfaceIdiom == .phone) {
+            // mainStoryboard method looks like:
+            // return UIStoryboard(name: "Main", bundle: nil)
+            mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        }
+        
+        let rootController = mainStoryboard!.instantiateInitialViewController()
+        assert(rootController != nil, "no user interface, must be the D day")
+        self.window?.rootViewController = rootController
+        self.window?.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         return true
     }
