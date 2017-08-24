@@ -20,8 +20,14 @@ RedditJSON
 
 
 
-### Screenshot Iphone
+### Screenshot iPhone
 
 ![image](screenshot/storyboard-iphone.png)
 
-![image](screenshot/simulator-iphone)
+![image](screenshot/simulator-iphone.png)
+
+### Screenshot iPad
+
+![image](screenshot/storyboard-ipad.png)
+
+![image](screenshot/simulator-ipad.png)
