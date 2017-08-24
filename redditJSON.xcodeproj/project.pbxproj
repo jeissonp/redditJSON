@@ -14,6 +14,7 @@
 		DE28291F1F4E2D1600368B72 /* DataReddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28291E1F4E2D1600368B72 /* DataReddit.swift */; };
 		DE2829211F4E2FE200368B72 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2829201F4E2FE200368B72 /* CollectionViewController.swift */; };
 		DE2829231F4E2FFB00368B72 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2829221F4E2FFB00368B72 /* CollectionViewCell.swift */; };
+		DE28292C1F4EFCC600368B72 /* ConnectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE28292B1F4EFCC600368B72 /* ConnectionTest.swift */; };
 		DE49DE8C1F4DDA6900C08DF6 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE49DE8B1F4DDA6900C08DF6 /* TableViewController.swift */; };
 		DE49DE8E1F4DDC8000C08DF6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE49DE8D1F4DDC8000C08DF6 /* TableViewCell.swift */; };
 		DEF9AA4D1F4DB35800D7B12E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF9AA4C1F4DB35800D7B12E /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 		DE28291E1F4E2D1600368B72 /* DataReddit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReddit.swift; sourceTree = "<group>"; };
 		DE2829201F4E2FE200368B72 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		DE2829221F4E2FFB00368B72 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		DE28292B1F4EFCC600368B72 /* ConnectionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTest.swift; sourceTree = "<group>"; };
 		DE49DE8B1F4DDA6900C08DF6 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		DE49DE8D1F4DDC8000C08DF6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		DE6A2AAA1F4DC8E400DE2518 /* redditJSON-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "redditJSON-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -152,12 +154,12 @@
 		DEF9AA401F4DB35700D7B12E = {
 			isa = PBXGroup;
 			children = (
+				C047F6323FF33508B8A06D7C /* Frameworks */,
+				1E5FE1FAE567A81F0D9A9077 /* Pods */,
+				DEF9AA4A1F4DB35800D7B12E /* Products */,
 				DEF9AA4B1F4DB35800D7B12E /* redditJSON */,
 				DEF9AA631F4DB35800D7B12E /* redditJSONTests */,
 				DEF9AA6E1F4DB35800D7B12E /* redditJSONUITests */,
-				DEF9AA4A1F4DB35800D7B12E /* Products */,
-				1E5FE1FAE567A81F0D9A9077 /* Pods */,
-				C047F6323FF33508B8A06D7C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,6 +186,7 @@
 				DEF9AA531F4DB35800D7B12E /* redditJSON.xcdatamodeld */,
 				DE6A2AAA1F4DC8E400DE2518 /* redditJSON-Bridging-Header.h */,
 				DE28291E1F4E2D1600368B72 /* DataReddit.swift */,
+				DE28292B1F4EFCC600368B72 /* ConnectionTest.swift */,
 			);
 			path = redditJSON;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				DEF9AA4F1F4DB35800D7B12E /* ViewController.swift in Sources */,
 				DE2829211F4E2FE200368B72 /* CollectionViewController.swift in Sources */,
 				DEF9AA4D1F4DB35800D7B12E /* AppDelegate.swift in Sources */,
+				DE28292C1F4EFCC600368B72 /* ConnectionTest.swift in Sources */,
 				DE49DE8C1F4DDA6900C08DF6 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

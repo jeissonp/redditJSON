@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rEb-Ka-tLh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DGp-Xw-JMF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,17 +20,43 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-reddit" translatesAutoresizingMaskIntoConstraints="NO" id="mtH-Xo-GPG">
+                                <rect key="frame" x="155" y="127" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="41B-Br-Nxc">
+                                <rect key="frame" x="16" y="218" width="343" height="429"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wid-sd-yt7">
+                                <rect key="frame" x="18" y="72" width="338" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="8tS-g5-vsd">
                         <barButtonItem key="backBarButtonItem" title="Back" id="c3h-4H-GR4"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="41B-Br-Nxc" id="xdm-6S-Wvu"/>
+                        <outlet property="iconImage" destination="mtH-Xo-GPG" id="bAF-dy-onn"/>
+                        <outlet property="titleLabel" destination="wid-sd-yt7" id="qY8-pB-gfb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1410" y="66"/>
+            <point key="canvasLocation" x="1749.5999999999999" y="83.208395802098963"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Home-->
         <scene sceneID="yUr-io-PYe">
             <objects>
                 <tableViewController id="rEb-Ka-tLh" customClass="TableViewController" customModule="redditJSON" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,14 +96,44 @@
                             <outlet property="delegate" destination="rEb-Ka-tLh" id="KOo-Fx-R6l"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Home" id="wuc-a8-Rhn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="aPI-Se-cnC">
+                            <color key="tintColor" red="0.96056436097410469" green="0.97823853673629235" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="loadData:" destination="rEb-Ka-tLh" id="4UV-g6-Eon"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableJSON" destination="yZc-5p-azW" id="Bxe-X1-9Wr"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goDetail" id="gqa-6j-IGv"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goDetail" id="gqa-6j-IGv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbD-AK-KgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="320.80000000000001" y="84.107946026986511"/>
+            <point key="canvasLocation" x="660" y="84.107946026986511"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zlG-U3-Olj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DGp-Xw-JMF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NCt-pa-J8R">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.28316325455939717" green="0.69474609375000007" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.9593248270721445" green="1" blue="0.88965834395056476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rEb-Ka-tLh" kind="relationship" relationship="rootViewController" id="US1-cC-SDP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U9W-gb-06J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="84"/>
         </scene>
     </scenes>
     <resources>

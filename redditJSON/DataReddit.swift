@@ -11,6 +11,7 @@ import Alamofire
 import SCLAlertView
 import MBProgressHUD
 import SwiftyJSON
+import CoreData
 
 class DataReddit {
     var arrRes = [[String:AnyObject]]() //Array of dictionary
@@ -37,27 +38,48 @@ class DataReddit {
                 
                 if self.arrRes.count > 0 {
                     for index in 0...(self.arrRes.count - 1) {
-                        
-                        let item = Items(context: self.context) // Link Task & Context
                         let dict = self.arrRes[index]
                         let data = dict["data"] as! [String:AnyObject]
-                        
-                        item.id = data["id"] as? String
-                        item.text = data["public_description"] as? String
-                        item.title = data["title"] as? String
-                        
-                        if let icon = data["icon_img"] as? String {
-                            item.icon = icon
+                        if let id = data["id"] as? String {
+                            if !self.checkItem(id: id, context: self.context) {
+                                let item = Items(context: self.context) // Link Task & Context
+                                item.id = id
+                                item.text = data["public_description"] as? String
+                                item.title = data["title"] as? String
+                                
+                                if let icon = data["icon_img"] as? String {
+                                    item.icon = icon
+                                }
+                                
+                                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                            }
                         }
-                        
-                        (UIApplication.shared.delegate as! AppDelegate).saveContext()
                     }
                 }
                 
-            case .failure(let error):
+            case .failure(let _):
                 SCLAlertView().showError("Error", subTitle: "Error al intentar consumir API")
             }
         }
+    }
+    
+    func checkItem(id:String, context: NSManagedObjectContext) -> Bool {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Items")
+        let predicateID = NSPredicate(format: "id == %@", id)
+        fetchRequest.predicate = predicateID
+        
+        do {
+            
+            let results = try context.fetch(fetchRequest)
+            if results.count > 0 {
+                return true
+            }
+        }
+        catch let error {
+            print(error.localizedDescription)
+        }
+        
+        return false
     }
     
     func getDataLocal() -> [Items] {

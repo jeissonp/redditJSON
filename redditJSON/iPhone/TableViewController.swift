@@ -9,9 +9,6 @@
 import UIKit
 import Foundation
 
-
-
-
 class TableViewController: UITableViewController {
     var indexSelected:Int = 0
     var arrRes = [[String:AnyObject]]() //Array of dictionary
@@ -24,10 +21,20 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getDataWeb()
-        items = data.getDataLocal()
+        if ConnectionCheck.isConnectedToNetwork() {
+            data.getDataWeb(view: self.view)
+        }
+        else {
+            var navigationBarAppearace = UINavigationBar.appearance()
+            navigationBarAppearace.barTintColor = UIColor.red
+            items = data.getDataLocal()
+        }
     }
-
+    @IBAction func loadData(_ sender: Any) {
+        items = data.getDataLocal()
+        tableJSON.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -140,8 +147,9 @@ class TableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "goDetail") {
-            let vc:ViewController = segue.destination as! ViewController
             
+            let vc:ViewController = segue.destination as! ViewController
+            vc.item = items[indexSelected]
         }
     }
  
