@@ -54,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749.5999999999999" y="83.208395802098963"/>
+            <point key="canvasLocation" x="1561" y="84"/>
         </scene>
         <!--Home-->
         <scene sceneID="yUr-io-PYe">
@@ -121,7 +121,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NCt-pa-J8R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.28316325455939717" green="0.69474609375000007" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.28235294117647058" green="0.69411764705882351" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.9593248270721445" green="1" blue="0.88965834395056476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>

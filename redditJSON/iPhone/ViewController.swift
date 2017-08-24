@@ -28,7 +28,7 @@ class ViewController: UIViewController {
             let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("icon_\(name).jpg")
             
             if fileManager.fileExists(atPath: imagePath) {
-               iconImage.image = UIImage(contentsOfFile: imagePath)!                
+               iconImage.image = UIImage(contentsOfFile: imagePath)!
             }
         }
         // Do any additional setup after loading the view, typically from a nib.

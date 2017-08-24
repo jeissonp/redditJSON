@@ -13,11 +13,15 @@ private let reuseIdentifier = "Cell"
 class CollectionViewController: UICollectionViewController {
     let data:DataReddit = DataReddit()
     var items: [Items] = []
-    
+    var indexSelected:Int = 0
     @IBOutlet var collectionJSON: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        
 //        data.getDataWeb(view: self.view)
         
         
@@ -37,15 +41,20 @@ class CollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if (segue.identifier == "goDetail") {
+            
+            let vc:ViewControlleriPad = segue.destination as! ViewControlleriPad
+            vc.item = items[indexSelected]
+        }
     }
-    */
+ 
 
     // MARK: UICollectionViewDataSource
 
@@ -137,10 +146,13 @@ class CollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         return false
     }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
+     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+     
+     }
+     */
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        indexSelected = (indexPath as NSIndexPath).row
+        self.performSegue(withIdentifier: "goDetail", sender: self)
     }
-    */
-
+    
 }

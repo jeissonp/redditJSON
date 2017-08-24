@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import SCLAlertView
 
 class TableViewController: UITableViewController {
     var indexSelected:Int = 0
@@ -25,6 +26,8 @@ class TableViewController: UITableViewController {
             data.getDataWeb(view: self.view)
         }
         else {
+            SCLAlertView().showInfo("Sin conexión :(", subTitle: "Se muestran los datos guardados en cache")
+            
             var navigationBarAppearace = UINavigationBar.appearance()
             navigationBarAppearace.barTintColor = UIColor.red
             items = data.getDataLocal()
